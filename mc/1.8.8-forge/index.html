@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Play Minecraft 1.8.8 in your browser! " />
+		<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8" />
+		<title>Minecraft* 1.8.8</title>
+		<meta property="og:locale" content="en-US" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Minecraft 1.8.8" />
+		<meta property="og:description" content="Play Minecraft 1.8.8 in your browser!" />
+		<meta property="og:image" content="/favicon.webp" />
+		<link type="image/png" rel="shortcut icon" href="/favicon.webp" />
+		<script type="text/javascript" src="classes.js"></script>
+		<script type="text/javascript" src="ModAPI.js"></script>
+        <script type="text/javascript" src="ModLoader.js"></script>
+		<script type="text/javascript" src="ModGUI.js"></script>
+		<script type="text/javascript" src="anvil.js"></script>
+		<script type="text/javascript">
+			"use strict";
+			window.addEventListener("load", () => {
+				if(document.location.href.startsWith("file:")) {
+					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
+				}else {
+					// %%%%%%%%% launch options %%%%%%%%%%%%
+					
+					const relayId = Math.floor(Math.random() * 3);
+					window.eaglercraftXOpts = {
+						container: "game_frame",
+						assetsURI: "assets.epk",
+						localesURI: "lang/",
+						servers: [
+							{
+								addr: "wss://eagler.eaglesmp.org",
+								name: "EagleSMP #1"
+							},
+							{
+								addr: "wss://eagler.colbster937.dev",
+								name: "EagleSMP #2"
+							},
+                            {
+                                addr: "wss://eagler-backrooms.colbster937.dev",
+                                name: "The Backrooms"
+                            }
+						],
+						"relays": [
+						    {
+					            "addr": "wss://eagler-relay.colbster937.dev/",
+					            "comment": "Colbster937's Relay",
+								"primary": true
+					        },
+						    {
+					            "addr": "wss://eagler-relay.eaglesmp.org/",
+					            "comment": "Colbster937's Relay",
+								"primary": false
+					        },
+					        {
+					            "addr": "wss://relay.deev.is/",
+					            "comment": "LAX1DUDE's Shared World Relay #1",
+								"primary": false
+					        },
+					        {
+					            "addr": "wss://relay.lax1dude.net/",
+					            "comment": "LAX1DUDE's Shared World Relay #2",
+								"primary": false
+					        },
+					        {
+					            "addr": "wss://relay.shhnowisnottheti.me/",
+					            "comment": "ayunami's Public Relay",
+								"primary": false
+					        }
+					    ]
+					};
+					
+					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+					
+					var q = window.location.search;
+					if(typeof q === "string" && q.startsWith("?")) {
+						q = new URLSearchParams(q);
+						var s = q.get("server");
+						if(s) window.eaglercraftXOpts.joinServer = s;
+					}
+					
+					main();
+				}
+			});
+		</script>
+	</head>
+	<body style="margin:0px;width:100vw;height:100vh;overflow:hidden;" id="game_frame">
+	</body>
+</html>

@@ -5,10 +5,13 @@ window.addEventListener('load', function() {
         document.body.removeChild(loader);
     });
 });
-document.addEventListener('contextmenu', event => event.preventDefault());
-window.gameFrame = document.querySelector('.game-frame');
+window.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    window.gameFrame = document.querySelector('.game-frame');
+    window.gameFrame.addEventListener('contextmenu', event => event.preventDefault());
+});
 function changeVersion(version) {
-    var friendlyVersion = version.replace('latest', 'Latest Release (1.8.8)').replace('classic', 'Classic').replace('ms-Classic', 'Classic (Microsoft Recreation)').replace('beta-1.3', 'Beta 1.3').replace('alpha-1.2.6', 'Alpha 1.2.6').replace('dragonx-client', 'DragonX Client');
+    var friendlyVersion = version.replace('latest', 'Latest Release (1.8.8)').replace('classic', 'Classic').replace('ms-Classic', 'Classic (Microsoft Recreation)').replace('beta-1.3', 'Beta 1.3').replace('alpha-1.2.6', 'Alpha 1.2.6').replace('dragonx-client', 'DragonX Client').replace('resent', 'Resent Client').replace('optifine', 'Shadow Client').replace('flame', 'Flame Client');
     document.querySelector('.version-btn').innerText = friendlyVersion;
     if(localStorage.getItem('cloakTab')!=='true'){document.title='WebMC Launcher | '+friendlyVersion};
     window.currentVersion = version.replace('latest', '1.8.8').replace('Classic', 'classic').replaceAll(' ', '-');

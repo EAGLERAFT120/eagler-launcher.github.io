@@ -142,19 +142,27 @@ input, button {
     margin-left: 10px;
 }
 
-.version-content .recommended {
+.version-content .vanilla {
     background-color: #065800;
 }
 
-.version-content .recommended:hover {
+.version-content .vanilla:hover {
     background-color: #087400;
 }
 
-.version-content .notrecommended {
+.version-content .modded {
+    background-color: #c29f01;
+}
+
+.version-content .modded:hover {
+    background-color: #cea902;
+}
+
+.version-content .hacked {
     background-color: #790101;
 }
 
-.version-content .notrecommended:hover {
+.version-content .hacked:hover {
     background-color: #970202;
 }
 
